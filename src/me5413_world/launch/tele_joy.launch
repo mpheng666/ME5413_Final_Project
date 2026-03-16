@@ -1,0 +1,52 @@
+<launch>
+  <!-- Joystick driver -->
+  <node pkg="joy" type="joy_node" name="joy_node" output="screen">
+    <param name="dev" value="/dev/input/js0" />
+    <param name="deadzone" value="0.12" />
+    <param name="autorepeat_rate" value="20.0" />
+    <param name="coalesce_interval" value="0.01" />
+  </node>
+
+  <!-- Joystick -> cmd_vel -->
+  <node pkg="teleop_twist_joy" type="teleop_node" name="teleop_twist_joy" output="screen">
+    <param name="require_enable_button" value="true" />
+    <param name="enable_button" value="4" />
+    <param name="enable_turbo_button" value="5" />
+
+    <rosparam param="axis_linear">
+      x: 1
+      y: -1
+      z: -1
+    </rosparam>
+
+    <rosparam param="axis_angular">
+      yaw: 2
+      pitch: -1
+      roll: -1
+    </rosparam>
+
+    <rosparam param="scale_linear">
+      x: 0.5
+      y: 0.0
+      z: 0.0
+    </rosparam>
+
+    <rosparam param="scale_linear_turbo">
+      x: 1.0
+      y: 0.0
+      z: 0.0
+    </rosparam>
+
+    <rosparam param="scale_angular">
+      yaw: 0.8
+      pitch: 0.0
+      roll: 0.0
+    </rosparam>
+
+    <rosparam param="scale_angular_turbo">
+      yaw: 1.5
+      pitch: 0.0
+      roll: 0.0
+    </rosparam>
+  </node>
+</launch>
