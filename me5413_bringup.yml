@@ -1,0 +1,24 @@
+name: me5413_bringup
+root: /home/user/project/ME5413_Final_Project
+
+env:
+  ROS_MASTER_URI: http://localhost:11311
+  BUILD_WS: /home/user/project/ME5413_Final_Project
+
+pre_window:
+  source /opt/ros/noetic/setup.bash && source devel/setup.bash
+
+windows:
+  - bringup:
+      layout: tiled
+      panes:
+        - roscore
+        - until rostopic list >/dev/null 2>&1; do sleep 1; done; roslaunch me5413_world world.launch
+        - until rostopic list >/dev/null 2>&1; do sleep 1; done; roslaunch me5413_world manual.launch
+        - until rostopic list >/dev/null 2>&1; do sleep 1; done; roslaunch me5413_world tele_joy.launch
+
+  - monitor:
+      layout: even-horizontal
+      panes:
+        - htop
+        - nvtop

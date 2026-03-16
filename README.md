@@ -97,6 +97,25 @@ There are two sources of models needed:
 
 ## Usage
 
+### Bringup with tmuxp [optional]
+
+## Install tmuxinator
+```bash
+sudo apt update
+sudo apt install tmuxinator
+ln -s "$(pwd)/me5413_bringup.yml" ~/.tmuxinator/me5413_bringup.yml
+```
+
+## Start the simulation with tmuxinator
+```bash
+tmuxinator start me5413_bringup.yml
+```
+
+## Kill the tmux session
+```bash
+tmux kill-server
+```
+
 ### 0. Gazebo World
 
 This command will launch the gazebo with the project world
