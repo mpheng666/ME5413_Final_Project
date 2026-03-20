@@ -1,0 +1,13 @@
+<launch>
+	<node name="ground_robot_localization" pkg="gazebo_localization" type="ugv_pose_from_gz_exe" output="screen"/>
+
+	<!-- load pcd -->
+  <arg name="nodelet_manager" default="nodelet_manager" />
+  <node pkg="nodelet" type="nodelet" name="$(arg nodelet_manager)" args="manager" output="screen"/>
+    <node pkg="nodelet" type="nodelet" name="globalmap_server_nodelet" args="load hdl_localization/GlobalmapServerNodelet $(arg nodelet_manager)">
+      <param name="globalmap_pcd" value="$(find hdl_localization)/data/map.pcd" />
+      <param name="convert_utm_to_local" value="false" />
+      <param name="downsample_resolution" value="0.1" />
+    </node>
+    
+</launch>
