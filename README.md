@@ -108,7 +108,7 @@ ln -s "$(pwd)/me5413_bringup.yml" ~/.tmuxinator/me5413_bringup.yml
 
 ## Start the simulation with tmuxinator
 ```bash
-tmuxinator start me5413_bringup.yml
+tmuxinator start me5413_bringup
 ```
 
 ## Kill the tmux session
