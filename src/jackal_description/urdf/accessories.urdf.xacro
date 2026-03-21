@@ -51,7 +51,7 @@
     - utm30            :: Hokuyo UTM30
   -->
   <!-- Primary 2D Lidar -->
-  <xacro:if value="$(optenv JACKAL_LASER 0)">
+  <xacro:if value="$(optenv JACKAL_LASER 1)">
     <xacro:property name="mount" value="$(optenv JACKAL_LASER_MOUNT front)" />
     <xacro:property name="topic" value="$(optenv JACKAL_LASER_TOPIC front/scan)" />
     <xacro:property name="tower" value="$(optenv JACKAL_LASER_TOWER 1)" />
