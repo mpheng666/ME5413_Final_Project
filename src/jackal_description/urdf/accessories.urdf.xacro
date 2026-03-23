@@ -184,9 +184,12 @@
     <xacro:property name="parent" value="$(optenv JACKAL_LASER_3D_PARENT ${mount}_mount)" />
     <xacro:property name="lidar_3d_model" value="$(optenv JACKAL_LASER_3D_MODEL vlp16)" />
     <xacro:property name="gpu" value="$(optenv JACKAL_LASER_3D_GPU 1)" />
+    <xacro:property name="collision_range" value="$(optenv JACKAL_LASER_3D_COLLISION_RANGE 0.15)" />
+    <xacro:property name="min_range" value="$(optenv JACKAL_LASER_3D_MIN_RANGE 0.5)" />
+
     <!-- Velodyne VLP16 -->
     <xacro:if value="${lidar_3d_model == 'vlp16'}">
-      <xacro:vlp16_mount topic="${topic}" tower="${tower}" prefix="${prefix}" parent_link="${parent}" gpu="${gpu}">
+      <xacro:vlp16_mount topic="${topic}" tower="${tower}" prefix="${prefix}" parent_link="${parent}" gpu="${gpu}" collision_range="${collision_range}" min_range="${min_range}">
         <origin xyz="$(optenv JACKAL_LASER_3D_OFFSET 0 0 0)" rpy="$(optenv JACKAL_LASER_3D_RPY 0 0 0)" />
       </xacro:vlp16_mount>
     </xacro:if>
